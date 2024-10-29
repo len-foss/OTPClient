@@ -24,6 +24,7 @@
 #include "dbinfo-cb.h"
 #include "change-file-cb.h"
 #include "change-db-sec.h"
+#include "tray.h"
 
 #ifndef IS_FLATPAK
 static gchar     *get_db_path               (AppData            *app_data);
@@ -383,7 +384,6 @@ migrate_secretservice_kf (AppData  *app_data,
     }
 }
 
-
 static void
 create_main_window (gint     width,
                     gint     height,
@@ -396,6 +396,9 @@ create_main_window (gint     width,
 
     GtkWidget *lock_btn = GTK_WIDGET(gtk_builder_get_object (app_data->builder, "lock_btn_id"));
     g_signal_connect (lock_btn, "clicked", G_CALLBACK(lock_app), app_data);
+    if (app_data->use_tray) {
+        init_tray_icon(app_data);
+    }
     if (app_data->use_secret_service == TRUE) {
         // secret service is enabled, so we can't lock the app
         gtk_widget_set_sensitive (lock_btn, FALSE);

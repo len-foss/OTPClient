@@ -70,6 +70,7 @@ pkg_check_modules(UUID REQUIRED uuid>=2.34.0)
 pkg_check_modules(PROTOC REQUIRED libprotobuf-c>=1.3.0)
 pkg_check_modules(LIBSECRET REQUIRED libsecret-1>=0.20.0)
 pkg_check_modules(LIBQRENCODE REQUIRED libqrencode>=4.0.2)
+pkg_check_modules(APPINDICATOR REQUIRED ayatana-appindicator3-0.1)
 
 set(COMMON_INCDIRS
         ${GCRYPT_INCLUDE_DIRS}
@@ -93,8 +94,10 @@ set(COMMON_LIBS
 
 if(BUILD_GUI)
     add_subdirectory(src/gui)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${APPINDICATOR_INCLUDE_DIRS})
     target_link_libraries(${PROJECT_NAME}
             ${GTK3_LIBRARIES}
+            ${APPINDICATOR_LIBRARIES}
             ${PNG_LIBRARIES}
             ${ZBAR_LIBRARIES}
             ${COMMON_LIBS}

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <gtk/gtk.h>
+#include <libayatana-appindicator/app-indicator.h>
 #include <jansson.h>
 #include "../common/db-common.h"
 
@@ -14,6 +15,7 @@ typedef struct app_data_t {
     GtkBuilder *settings_popover_builder;
 
     GtkWidget *main_window;
+    AppIndicator *indicator;
     GtkTreeView *tree_view;
 
     GtkClipboard *clipboard;
