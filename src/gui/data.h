@@ -47,6 +47,8 @@ typedef struct app_data_t {
 
     gboolean use_secret_service;
 
+    gboolean use_tray;
+
     GDateTime *last_user_activity;
 
     GtkWidget *diag_rcdb;

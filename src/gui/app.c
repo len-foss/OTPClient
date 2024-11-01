@@ -344,6 +344,7 @@ set_config_data (gint     *width,
         app_data->auto_lock = g_key_file_get_boolean (kf, "config", "auto_lock", NULL);
         app_data->inactivity_timeout = g_key_file_get_integer (kf, "config", "inactivity_timeout", NULL);
         app_data->use_dark_theme = g_key_file_get_boolean (kf, "config", "dark_theme", NULL);
+        app_data->use_tray = g_key_file_get_boolean (kf, "config", "use_tray", NULL);
         // handle migration from disable_secret_service to use_secret_service
         tmp = g_key_file_get_boolean (kf, "config", "disable_secret_service", &err);
         if (tmp == TRUE || (tmp == FALSE && err == NULL)) {
